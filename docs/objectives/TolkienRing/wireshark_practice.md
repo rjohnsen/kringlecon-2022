@@ -43,7 +43,7 @@ Found by going directly to the packet from last question: Wireshark -> Go -> Go 
 
 Downloaded the "app.php" file locally and read through and found reference to file "Ref_Sept24-2020.zip"
 
-```php
+```javascript
     let byteNumbers = new Array(byteCharacters.length);
     for (let i = 0; i < byteCharacters.length; i++) {
         byteNumbers[i] = byteCharacters.charCodeAt(i);
@@ -61,5 +61,17 @@ Downloaded the "app.php" file locally and read through and found reference to fi
 </body>
 ```
 
+**6. Attackers used bad TLS certificates in this traffic. Which countries were they registered to? Submit the names of the countries in alphabetical order separated by a commas (Ex: Norway, Sout Korea).**
 
+| Country Code | Country |
+| ------------ | ------- |
+| IE | Ireland |
+| IL | Israel |
+| SS | | South Sudan |
+| US | United States |
 
+Answer is **Ireland, Israel, South Sudan**
+
+**7. Is the host infected (Yes|No)**
+
+Answer is *Yes*
