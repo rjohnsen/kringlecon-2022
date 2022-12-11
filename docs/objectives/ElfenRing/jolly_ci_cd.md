@@ -258,3 +258,5 @@ root@wordpress:/# cat flag.txt
 And the flag is: 
 
 ![Elfen ring flag](/img/elfen-ring/elfen-ring-flag.png)
+
+Text value: oI40zIuCcN8c3MhKgQjOMN8lfYtVqcKT
