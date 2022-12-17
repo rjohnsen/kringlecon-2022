@@ -372,3 +372,91 @@ The aws lambda command to list functions can be found here:
 https://awscli.amazonaws.com/v2/documentation/api/latest/reference/lambda/index.html
 ```
 
+```bash
+elf@2f0c1d64de94:~$ aws lambda list-functions
+{
+    "Functions": [
+        {
+            "FunctionName": "smogmachine_lambda",
+            "FunctionArn": "arn:aws:lambda:us-east-1:602123424321:function:smogmachine_lambda",
+            "Runtime": "python3.9",
+            "Role": "arn:aws:iam::602123424321:role/smogmachine_lambda",
+            "Handler": "handler.lambda_handler",
+            "CodeSize": 2126,
+            "Description": "",
+            "Timeout": 600,
+            "MemorySize": 256,
+            "LastModified": "2022-09-07T19:28:23.634+0000",
+            "CodeSha256": "GFnsIZfgFNA1JZP3TgTI0tIavOpDLiYlg7oziWbtRsa=",
+            "Version": "$LATEST",
+            "VpcConfig": {
+                "SubnetIds": [
+                    "subnet-8c80a9cb8b3fa5505"
+                ],
+                "SecurityGroupIds": [
+                    "sg-b51a01f5b4711c95c"
+                ],
+                "VpcId": "vpc-85ea8596648f35e00"
+            },
+            "Environment": {
+                "Variables": {
+                    "LAMBDASECRET": "975ceab170d61c75",
+                    "LOCALMNTPOINT": "/mnt/smogmachine_files"
+                }
+            },
+            "TracingConfig": {
+                "Mode": "PassThrough"
+            },
+            "RevisionId": "7e198c3c-d4ea-48dd-9370-e5238e9ce06e",
+            "FileSystemConfigs": [
+                {
+                	"Arn": "arn:aws:elasticfilesystem:us-east-1:602123424321:access-point/fsap-
+db3277b03c6e975d2",
+                    "LocalMountPath": "/mnt/smogmachine_files"
+                }
+            ],
+            "PackageType": "Zip",
+            "Architectures": [
+                "x86_64"
+            ],
+            "EphemeralStorage": {
+                "Size": 512
+            }
+        }
+    ]
+}
+elf@2f0c1d64de94:~$ 
+```
+
+```
+Lambda functions can have public URLs from which they are directly accessible.
+Use the AWS CLI to get the configuration containing the public URL of the Lambda function.
+The aws lambda command to get the function URL config can be found here:
+https://awscli.amazonaws.com/v2/documentation/api/latest/reference/lambda/index.html
+```
+
+```bash
+elf@de6314a7d7e3:~$ aws lambda get-function-url-config --function-name smogmachine_lambda
+{
+    "FunctionUrl": "https://rxgnav37qmvqxtaksslw5vwwjm0suhwc.lambda-url.us-east-1.on.aws/",
+    "FunctionArn": "arn:aws:lambda:us-east-1:602123424321:function:smogmachine_lambda",
+    "AuthType": "AWS_IAM",
+    "Cors": {
+        "AllowCredentials": false,
+        "AllowHeaders": [],
+        "AllowMethods": [
+            "GET",
+            "POST"
+        ],
+        "AllowOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": [],
+        "MaxAge": 0
+    },
+    "CreationTime": "2022-09-07T19:28:23.808713Z",
+    "LastModifiedTime": "2022-09-07T19:28:23.808713Z"
+}
+elf@de6314a7d7e3:~$
+```
+
