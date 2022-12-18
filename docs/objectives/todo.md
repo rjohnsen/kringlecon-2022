@@ -9,4 +9,4 @@
 
 ## Missing levels
 
-* Glamtariels Fountain
+* [ ] Glamtariels Fountain
