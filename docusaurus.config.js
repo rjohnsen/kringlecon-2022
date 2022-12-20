@@ -69,12 +69,6 @@ const config = {
             position: 'left',
             label: 'Objectives',
           },
-          {
-            type: 'doc',
-            docId: 'terminals/intro',
-            position: 'left',
-            label: 'Terminals',
-          }
         ],
       },
       footer: {
