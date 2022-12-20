@@ -34,17 +34,9 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -60,7 +52,7 @@ const config = {
         title: 'Kringlecon 2022',
         logo: {
           alt: 'kringlecon-2022 logo',
-          src: 'img/logo.svg',
+          src: 'img/liftarn-Santa-skull.svg',
         },
         items: [
           {
