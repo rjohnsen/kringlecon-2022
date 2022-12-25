@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Introduction
+# Foreword
 
 Life is circular - so is the year. It starts in January and ends with "SANS Holiday Hack Challenge" and "KringleCon". Then it repeats next year as a tradition - almost like Christmas itself.  
 
