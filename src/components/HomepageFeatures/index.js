@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 const FeatureList = [
   {
     title: 'Introduction',
-    Svg: require('@site/static/img/ring.svg').default,
+    Svg: require('@site/static/img/weather.svg').default,
     link: "docs/objectives/intro",
     description: (
       <>
@@ -15,7 +15,7 @@ const FeatureList = [
   },
   {
     title: 'Orientation',
-    Svg: require('@site/static/img/ring.svg').default,
+    Svg: require('@site/static/img/weather.svg').default,
     link: "docs/objectives/KringleCon%20Orientation",
     description: (
       <>
@@ -25,7 +25,7 @@ const FeatureList = [
   },
   {
     title: 'Recover Tolkien Ring',
-    Svg: require('@site/static/img/ring.svg').default,
+    Svg: require('@site/static/img/weather.svg').default,
     link: "docs/category/recover-tolkien-ring",
     description: (
       <>
@@ -35,7 +35,7 @@ const FeatureList = [
   },
   {
     title: 'Recover Elfen Ring',
-    Svg: require('@site/static/img/ring.svg').default,
+    Svg: require('@site/static/img/weather.svg').default,
     link: "docs/category/recover-elfen-ring",
     description: (
       <>
@@ -46,7 +46,7 @@ const FeatureList = [
   },
   {
     title: 'Recover Web Ring',
-    Svg: require('@site/static/img/ring.svg').default,
+    Svg: require('@site/static/img/weather.svg').default,
     link: "docs/category/recover-web-ring",
     description: (
       <>
@@ -57,7 +57,7 @@ const FeatureList = [
   },
   {
     title: 'Recover Cloud Ring',
-    Svg: require('@site/static/img/ring.svg').default,
+    Svg: require('@site/static/img/weather.svg').default,
     link: "docs/category/recover-cloud-ring",
     description: (
       <>
@@ -68,7 +68,7 @@ const FeatureList = [
   },
   {
     title: 'Recover the Burning Ring of Fire',
-    Svg: require('@site/static/img/ring.svg').default,
+    Svg: require('@site/static/img/weather.svg').default,
     link: "docs/category/recover-the-burning-ring-of-fire",
     description: (
       <>
@@ -79,7 +79,7 @@ const FeatureList = [
   },
   {
     title: 'Finale  ',
-    Svg: require('@site/static/img/ring.svg').default,
+    Svg: require('@site/static/img/weather.svg').default,
     link: "docs/objectives/finale",
     description: (
       <>
@@ -95,7 +95,7 @@ function Feature({Svg, title, description, link}) {
     <div className={clsx('col col--4')}>
       <a href={link}>
         <div className="text--center">
-          <Svg className={styles.featureSvg} role="img" />
+          <Svg className={styles.featureSvg} class="snowflake" role="img" />
         </div>
         <div className="text--center padding-horiz--md">
           <h3>{title}</h3>
