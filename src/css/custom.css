@@ -40,5 +40,9 @@
 }
 
 .footer--dark {
+  background-color: #1B1B1D;
+}
 
+nav {
+  border-width: 0;
 }

@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Kringlecon 2022',
+  title: 'SANS Holiday Hack Challenge 2022',
   tagline: 'Writeup Roger C.B. Johnsen',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
@@ -49,7 +49,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Kringlecon 2022',
+        title: 'SANS Holiday Hack Challenge 2022',
         logo: {
           alt: 'kringlecon-2022 logo',
           src: 'img/liftarn-Santa-skull.svg',
@@ -66,7 +66,7 @@ const config = {
       footer: {
         style: 'dark',
         links: [],
-        copyright: `Copyright © ${new Date().getFullYear()} Roger C.B. Johnsen. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Roger C.B. Johnsen. Built with Sticks, stone, rubber bands and glue.`,
       },
       prism: {
         theme: lightCodeTheme,
