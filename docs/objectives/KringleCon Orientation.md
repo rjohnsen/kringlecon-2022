@@ -53,3 +53,7 @@ Before the player can enter the game fully there's one more obstacle to overcome
 After all of this, the player can advance through the gate which leads to the North Pole courtyard. Here the player will meet Santa - which has a couple of things to say.
 
 ![Use the terminal](/img/challenge-1/talking-to-santa.png)
+
+After talking to Santa I started to look around and found Ed Skoudis:
+
+![Ed](/img//ed.png)

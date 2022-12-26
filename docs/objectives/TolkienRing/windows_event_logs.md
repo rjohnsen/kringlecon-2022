@@ -88,6 +88,8 @@ By following the events, I found the answer: **Recipe.txt**
 
 **Query**
 
+The sentence "and stored to a variable" is important in this query. From the previous query I found a variable named "foo". Basing my query around that:
+
 ```python
 q3df = df[ (df["DateOnly"] == pd.Timestamp("2022-12-24")) & (df["Category"].str.contains("\$foo\s=\sGet-Content", regex=True))].sort_values(by="DateTime", ascending=False).iloc[:1]
 q3df["Category"]
@@ -112,6 +114,8 @@ $foo = Get-Content .\Recipe| % {$_ -replace 'honey', 'fish oil'}
 
 **Query**
 
+Still holding on to the "foo" variable, I query for all entries containing "$foo" by using regex. After I have retrieved the searchresult I use regex to print out the value I need:
+
 ```python
 q4df = df[ (df["DateOnly"] == pd.Timestamp("2022-12-24")) & (df["Category"].str.contains("\$foo \|", regex=True))].sort_values(by="DateTime", ascending=False).iloc[:1]
 re.search(r"\n(.+)\n\n", q4df["Category"].iloc[0]).group(1)
@@ -128,6 +132,8 @@ $foo | Add-Content -Path 'Recipe'
 > The attacker ran the previous command against a file multiple times. What is the name of this file?
 
 **Query**
+
+Variable "foo" is still in the searchlight in this query.
 
 ```python
 q5df = df[ (df["DateOnly"] == pd.Timestamp("2022-12-24")) & (df["Category"].str.contains("foo", regex=True))].sort_values(by="DateTime", ascending=False)
@@ -162,20 +168,21 @@ The answer is **Recipe.txt**
 
 > Where any files deleted? (Yes/No)
 
-Answer is **Yes**
+Answer is **Yes**. Did not prepare a query for this one.
 
 ## Question 7
 
 > Was the original file (from question 2) deleted? (Yes/No)
 
-The answer is **No**
+The answer is **No**. Did not prepare a query for this one.
 
 ## Question 8
 
 > What is the Event ID of the log that shows the actual command line used to delete the file?
 
-
 **Query**
+
+Finding count of EventID where "Recipe.txt" is referred. 
 
 ```python
 q8df = df[ (df["DateOnly"] == pd.Timestamp("2022-12-24")) & (df["Category"].str.contains("Recipe.txt"))].groupby("EventID").size().sort_values(ascending=True)
@@ -196,13 +203,15 @@ The answer is 4104
 
 > Is the secret ingredient compromised? (Yes/No)
 
-The answer is *Yes*
+The answer is *Yes*. Did not prepare a query for this one, but from answers earlier we see that the word "honey" play a vital role.
 
 ## Question 10
 
 > What is the secret ingredient?
 
 **Query**
+
+My thought here was to find where content from file was obtained and take closer look at that.
 
 ```python
 q10dfa = df[ (df["DateOnly"] == pd.Timestamp("2022-12-24")) & (df["Category"].str.contains("\$foo\s=\sGet-Content", regex=True))].sort_values(by="DateTime", ascending=False).iloc[:1]

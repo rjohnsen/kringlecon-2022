@@ -25,7 +25,7 @@ sidebar_position: 3
 >
 > Good luck, and thanks for helping save the North Pole!
 
-### Suricata rule
+**Suricata rule**
 
 ```suricata
 alert dns any any -> any any (msg:”Known bad DNS lookup, possible Dridex infection”; dns.query; content:”adv.epostoday.uk”; nocase;sid:1337;)
@@ -39,7 +39,7 @@ alert dns any any -> any any (msg:”Known bad DNS lookup, possible Dridex infec
 > 
 > For the second indicator, we flagged 0 packet(s), but we expected 681. Please try again!
 
-### Suricata rule
+**Suricata rule**
 
 ```suricata
 alert http 192.185.57.242 any <> any any (msg:"Investigate suspicious connections, possible Dridex infection";sid:1338;)
@@ -51,7 +51,7 @@ alert http 192.185.57.242 any <> any any (msg:"Investigate suspicious connection
 > Develop a Suricata rule to match and alert on an SSL certificate for heardbellith.Icanwepeh.nagoya.
 > When your rule matches, the message (msg) should read Investigate bad certificates, possible Dridex infection
 
-### Suricata rule
+**Suricata rule**
 
 ```suricata
 alert tcp any any -> any any (msg:"Investigate bad certificates, possible Dridex infection";tls.cert_subject; content:"CN=heardbellith.Icanwepeh.nagoya";sid:1339;)
@@ -64,7 +64,7 @@ alert tcp any any -> any any (msg:"Investigate bad certificates, possible Dridex
 > Oh, and that string might be GZip compressed - I hope that's OK!
 > Just in case they try this again, please alert on that HTTP data with message Suspicious JavaScript function, possible Dridex infection
 
-### Suricata rule
+**Suricata rule**
 
 ```suricata
 alert tcp any any -> any any (msg:"Suspicious JavaScript function, possible Dridex infection";content:"let byteCharacters = atob"; http_server_body;))

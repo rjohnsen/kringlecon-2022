@@ -12,31 +12,31 @@ sidebar_position: 1
 
 ### This all started when I clicked on a link in my email. Can you help me?
 
-The questions for this game is presented through a Cranberry terminal - but the associated PCAP can be downloaded and analyzed separately by the player. For the first question the player is to type **"yes"** in the upper terminal split. It doesn't matter what the player enters, though as I typed **"Old Mchondal had a Pharm"**:
+The questions for this game is presented through a Cranberry terminal - but the associated PCAP can be downloaded and analyzed separately by the player. For the first question the player has to type **"yes"** in the upper terminal split. It doesn't actually matter what the player enters, though, as I typed **"Old McDonald had a Pharm"**:
 
 ![Use the terminal](/img/tolkien-ring/wireshark-terminal.png)
 
 ### There are objects in the PCAP file that can be exported by Wireshark and/or Tshark. What type of objects can be exported from this PCAP?
 
-Wireshark has built in functionality to dump objects found in a PCAP. For this assignment the player would open "File -> Export Objects":
+Wireshark has built in functionality to dump objects found in a PCAP. For this objective I opened the "File -> Export Objects" window:
 
 ![Use the terminal](/img/tolkien-ring/wireshark-1.png)
 
-Which will display an object list: 
+Which displayed a short object list: 
 
 ![Use the terminal](/img/tolkien-ring/wireshark-2.png)
 
-There are objects which can be exported of type **"HTTP"** in this PCAP.
+The objects that can be exported from this PCAP is of the **HTTP** kind.
 
 ### What is the name of the largest file we can export?
 
-Still in the object list, the player can simply sort the list by "Size" column to find the largest file (or just find it manually since the list is so small).  In this case it would be **"app.php"** (808 kB):
+Still in the object list, the player can simply sort the list by "Size" column to find the largest file (or just find it manually since the list is so small - which I did). In this case it would be **"app.php"** (808 kB):
 
 ![Use the terminal](/img/tolkien-ring/wireshark-2.png)
 
 ### What packet number starts that app.php file?
 
-Still in the object list, the player can simply look at the "Packet" column to determine the packet nummer. In this case it would be **"687"**:
+Still in the object list, the player can simply look at the "Packet" column to determine the packet number. In this case it would be **"687"**:
 
 ![Use the terminal](/img/tolkien-ring/wireshark-2.png)
 
@@ -54,7 +54,7 @@ The player can solve this problem by saving the **"app.php"** file locally from 
 
 ![Use the terminal](/img/tolkien-ring/wireshark-2.png)
 
-Then opening the **"app.php"** file in a text editor, say Sublime. In this file there is a reference to a file:
+Then opening the **"app.php"** file in a text editor, say Sublime which I dids. In this file there is a reference to a file:
 
 ```javascript
     let byteNumbers = new Array(byteCharacters.length);

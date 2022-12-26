@@ -61,4 +61,4 @@ Line: 14
 
 ```
 
-Anywho, the answer is **put_policy.py***, because there's where we find the credentials.
+Anywho, the answer is **put_policy.py**, because there's where we find the credentials.

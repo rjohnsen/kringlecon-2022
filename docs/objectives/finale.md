@@ -4,9 +4,16 @@ sidebar_position: 7
 
 # Finale
 
+Upon completing all the objectives I felt a bit lonely. I then went to the courtyard in the North Pole and started chatting with Santa:
+
 ![Last talk to santa](/img/finale/last-talk-to-santa.png)
 
+
+Santa wanted med to enter the castle. Santa was already in the castle when I arrived. Nevertheless, he had something so say:
+
 ![Last talk to santa](/img/finale/final-talk-to-santa.png)
+
+And then the endcredits came:
 
 ![Endcredits](/img/finale/endcredits.png)
 

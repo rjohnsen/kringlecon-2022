@@ -4,6 +4,12 @@ sidebar_position: 1
 
 # Buy a hat
 
+In order to buy a hat, we must pay a visit to the hat vending machine:
+
+![Hat store](/img/burning-ring/hat-store.png)
+
+Then navigate through the menus finding a suitable hat:
+
 ![Buying a hat 1](/img/burning-ring/buying-a-hat-1.png)
 
 Important hat information 
@@ -18,7 +24,7 @@ Copy this information down - you need it!
 
 ## Pre-approve 10 KC transaction
 
-Walk over to the teller machine
+Following the instructions from aboce, walk over to the teller machine:
 
 ![Teller machine](/img/burning-ring/teller-machine.png)
 

@@ -2,8 +2,6 @@
 
 # Glamtariels Fountains
 
-STATUS: NOT DONE
-
 ## Hints
 
 ```
@@ -38,56 +36,55 @@ The dialoge for this game gives you various clues to solve this challenge. Clues
 From the hints we see this challenge is divided in two parts
 
 1. Make sense of the clues
-2. Usae XXE
+2. Use XXE
 
 #### Make sense of the clues
 
-| Clue 			 | Text from game | Meaning |
+| Clue 			     | Text from game | Meaning | 
 | -------------- | -------------- | ------- |
-| TAMPER         | Kringle really dislikes if anyone tries to TAMPER with the cookie recipe Glamtariel uses| | |
-|       	         | I don't know why anyone would ever ask me to TAMPER with cookie recipe. I know just how Kringle likes them. | | |
+| TAMPER         | Kringle really dislikes if anyone tries to TAMPER with the cookie recipe Glamtariel uses| Stay away from tampering with the cookies | 
+|       	       | I don't know why anyone would ever ask me to TAMPER with cookie recipe. I know just how Kringle likes them. | Same as above | 
 | TRAFFIC FLIES  | From water and cold new ice form Frozen spires from lakes will arise. Those shivering who weather the storm will learn from how the TRAFFIC FLIES| Look at network traffic to see what is served from where. | 
-| PATH           | I helped the elves create the PATH here to make sure that only those invited can find their way here.  | | 
-|                | The elves do a great job making PATHs which are easy to follow once you see them  | |  
-|                | Careful with the mountain! I know what you were wondering about there. It's no cause for concern. The PATH here is closed  | |       
-| APP            | Between Glamtariel and Kringle, many who have tried to find the PATH here uninvited have ended up very disAPPpointed. Please click away that ominous eye!| | 
-| TYPE           | Did you know that I speak many TYPEs of languages? For simplicity, I usually only communicate with this one though | |
-|                | I pretty much stick to just one TYPE of language, it's a lot easier to share things that way | |
-|                | You know, I've heard Glamtariel talk in her sleep about rings using a different TYPE of language. She may be more responsive about them if you ask differently. | |
-| SIMPLE FORMAT  | I like to keep track of all my rings using a SIMPLE FORMAT, although I usually don't like to discuss such things | |
-| RINGLIST       | Wow!, what a beautiful silver ring! I don't have one of these. I keep a list of all my rings in my RINGLIST file. Wait a minute! Uh, promise me you won't tell anyone. | |
-|                | I never heard Glamtariel mention a RINGLIST file before. If only there were a way to get a peek at that. | | |
+| PATH           | I helped the elves create the PATH here to make sure that only those invited can find their way here. | Most content is served from the static/images folder |
+|                | The elves do a great job making PATHs which are easy to follow once you see them  | Most content is served from the static/images folder  |
+|                | Careful with the mountain! I know what you were wondering about there. It's no cause for concern. The PATH here is closed  | Most content is served from the static/images folder |
+| APP            | Between Glamtariel and Kringle, many who have tried to find the PATH here uninvited have ended up very disAPPpointed. Please click away that ominous eye!| Might reflect the actual path being "app" |
+| TYPE           | Did you know that I speak many TYPEs of languages? For simplicity, I usually only communicate with this one though | Communication happens on JSON by default, so maybe XML? | 
+|                | I pretty much stick to just one TYPE of language, it's a lot easier to share things that way |  Communication happens on JSON by default, so maybe XML? |
+|                | You know, I've heard Glamtariel talk in her sleep about rings using a different TYPE of language. She may be more responsive about them if you ask differently. |  Communication happens on JSON by default, so maybe XML? |
+| SIMPLE FORMAT  | I like to keep track of all my rings using a SIMPLE FORMAT, although I usually don't like to discuss such things | There are many simple formats. Txt and CSV for example. |
+| RINGLIST       | Wow!, what a beautiful silver ring! I don't have one of these. I keep a list of all my rings in my RINGLIST file. Wait a minute! Uh, promise me you won't tell anyone. | We are looking for a ringlist |
+|                | I never heard Glamtariel mention a RINGLIST file before. If only there were a way to get a peek at that. | We are looking for a ringlist | 
 
 
 ##### Traffic Flies
 
-/static/js/images-1.js
-/static/images/starrybackground.png
-/static/images/2022_glamtariel_2022.png
-/static/images/img1-1671256015953.png
-/dropped
-/static/images/stage2ring-eyecu_2022.png
-/static/images/grinchum-supersecret_9364274.png
+Just to make sense of things I looked at the traffic flow and noted where things were hosted from: 
+
+* /static/js/images-1.js
+* /static/images/starrybackground.png
+* /static/images/2022_glamtariel_2022.png
+* /static/images/img1-1671256015953.png
+* /dropped
+* /static/images/stage2ring-eyecu_2022.png
+* /static/images/grinchum-supersecret_9364274.png
 
 
 ## Solving
 
-The stink/evil eye seems to play a vital role
+Ok. This took me awhile to figure out. In the upper right corner there are stuff that can be dragged and dropped on either the princess or the fountain. If I dropped each thing X amount of times on both the princess and the fountain a mysterious picture of a mountain showed up:
 
 ![Payment done](/img/web-ring/glamtariel-1.png)
 
-And so do these rings
+The stink/evil eye seems to play a vital role. More on that later. Moving on dropping things, eventually you'll be presented with some rings: 
 
 ![Payment done](/img/web-ring/glamtariel-2.png)
 
-If we pass requests to /dropped through BurpSuite Proxy then to Repeater we get
-
-
-
-
-
+As I mentioned, the "eye" seems to play a vital role. Once you click it away, it seems it enables communication with the backend using XML. 
 
 --------- 
+
+I set up BurpSuite as a proxy and caught POST requests. These requests were then replayed through BurpSuite Repeater. Content-Type header had to be changed to "application/xml", though.
 
 POST request 
 

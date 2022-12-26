@@ -4,6 +4,10 @@ sidebar_position: 1
 
 # Foreword
 
+Finally - December is here again and so are the SANS Holiday Hack Challenge! 
+
+Last year I won the Runner-Up Best Technical Answer - which certainly made my year! 
+
 
 
 Life is circular - so is the year. It starts in January and ends with "SANS Holiday Hack Challenge" and "KringleCon". Then it repeats next year as a tradition - almost like Christmas itself.  
