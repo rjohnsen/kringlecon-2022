@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Exploit a Smart Contract
+# Blockchain Divination
 
 ```
 Use the Blockchain Explorer in the Burning Ring of Fire to investigate the contracts and transactions on the chain. At what address is the KringleCoin smart contract deployed? Find hints for this objective hidden throughout the tunnels.
