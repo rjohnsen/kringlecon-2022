@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'SANS Holiday Hack Challenge 2022',
-  tagline: 'Writeup Roger C.B. Johnsen',
+  tagline: 'Writeup by Roger C.B. Johnsen',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',

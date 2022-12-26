@@ -4,12 +4,12 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Introduction',
+    title: 'Foreword',
     Svg: require('@site/static/img/weather.svg').default,
     link: "docs/objectives/intro",
     description: (
       <>
-        My introduction to this edition of SANS Holiday Hack Challenge
+        My foreword to this edition of SANS Holiday Hack Challenge
       </>
     ),
   },
@@ -29,7 +29,7 @@ const FeatureList = [
     link: "docs/category/recover-tolkien-ring",
     description: (
       <>
-        First Ring Layer: focus on Wireshark and Windows logs.
+        How to investigate Wireshark and Windows Event Logs and writing Suricate rules
       </>
     ),
   },
@@ -39,8 +39,7 @@ const FeatureList = [
     link: "docs/category/recover-elfen-ring",
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        How to Git clone, escape from prison and exploting CI/DI pipeline
       </>
     ),
   },
@@ -50,8 +49,7 @@ const FeatureList = [
     link: "docs/category/recover-web-ring",
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        How to investigate logs and opening a door
       </>
     ),
   },
@@ -61,8 +59,7 @@ const FeatureList = [
     link: "docs/category/recover-cloud-ring",
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        How to have fun with AWS and hunting for truffles
       </>
     ),
   },
@@ -72,8 +69,7 @@ const FeatureList = [
     link: "docs/category/recover-the-burning-ring-of-fire",
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        How to buy a hat, explore blockchains and buying NFT
       </>
     ),
   },
@@ -83,8 +79,7 @@ const FeatureList = [
     link: "docs/objectives/finale",
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        The End of the Game
       </>
     ),
   },

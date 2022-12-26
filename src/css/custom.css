@@ -49,6 +49,13 @@
     filter: invert(23%) sepia(10%) saturate(7294%) hue-rotate(160deg) brightness(97%) contrast(98%);
 }
 
+blockquote {
+  background-color: #282A36;
+  padding: 15px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
 nav {
   border-width: 0;
 }

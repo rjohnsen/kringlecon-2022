@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # Foreword
 
+
+
 Life is circular - so is the year. It starts in January and ends with "SANS Holiday Hack Challenge" and "KringleCon". Then it repeats next year as a tradition - almost like Christmas itself.  
 
 So, here we are - at the last month of 2022. A new edition of "SANS Holiday Hack Challenge" and "KringleCon" has arrived. As every year since many years ago, I joined the global cybersecurity community
