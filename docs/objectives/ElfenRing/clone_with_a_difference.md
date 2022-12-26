@@ -31,7 +31,7 @@ and the repository exists.
 bow@67147828b581:~$ 
 ```
 
-Trying the HTTPS route:
+That did not work out. Trying the HTTPS route instead (simply reformatting the clone URL to fit the HTTPS version):
 
 ```bash
 bow@b47e44aa7a9c:~$ git clone https://haugfactory.com/asnowball/aws_scripts.git
@@ -42,7 +42,7 @@ Unpacking objects: 100% (64/64), 23.83 KiB | 1.19 MiB/s, done.
 bow@b47e44aa7a9c:~$
 ```
 
-Reading the README
+That worked! Reading the README to get some clues:
 
 ```bash
 bow@b47e44aa7a9c:~$ cat aws_scripts/README.md 

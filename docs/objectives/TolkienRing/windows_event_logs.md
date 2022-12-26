@@ -8,9 +8,11 @@ sidebar_position: 2
 
 ****
 
-For this assignment I decided to use Jupyter notebook to parse the log given. However, I had to download the said Windows log, open it in Windows Event Viewer, export it as CSV before I could toss some Pandas magic on it. 
+For this objective I decided to use Jupyter notebook to parse the log given. Prior to unleasing Jupyther and Pandas on the log, it had to be opened in Windows Event Viewer and then exported as CSV.
 
 ### Jupyter setup
+
+Prior to handling the CSV I had to instruct Pandas how to parse the CSV - meaning stating the separator and setting up column name mappings: 
 
 ```python
 import pandas as pd
@@ -28,20 +30,19 @@ df = pd.read_csv(
     index_col=False
 )
 ```
+
 ## Question 1
 
 > What month/day/year did the attack take place? For example, 09/05/2021
 
-### Query
+**Pandas Query**
 
 ```python
 df["DateOnly"] = pd.to_datetime(df["DateTime"]).dt.date
 df.groupby("DateOnly").size().sort_values(ascending=False).iloc[:1]
 ```
 
-The logic behind this query is simple: 
-
-We extend the DataFrame with one more column holding the the date part of the timestamp. This makes it easier to group the data by date and count occurrences. By sorting in descending order and returning the first row, we got our answer:
+The logic behind this query is simple: We extend the DataFrame with one more column holding the the date part of the timestamp. This makes it easier to group the data by date and count occurrences. By sorting in descending order and returning the first row, we got our answer:
 
 ```
 DateOnly
@@ -49,20 +50,22 @@ DateOnly
 dtype: int64
 ```
 
-Date has to be formatted to match the requested date format (12/24/2022)
+Date had to be formatted to match the requested date format (12/24/2022)
 
 ## Question 2
 
 > An attacker got a secret from a file. What was the original file's name?
 
-### Query
+**Query**
+
+My hypothesis is that the attacker added something to the file in question. Thus the string "Add-Content -Path" should be in the Powershell command line: 
 
 ```python
 q2df = df[ (df["DateOnly"] == pd.Timestamp("2022-12-24")) & (df["Category"].str.contains("Add-Content -Path"))]
 q2df[ ["DateTime", "Category"] ]
 ```
 
-### Query Result
+**Query Result**
 
 ```
 	    DateTime 	            Category
@@ -76,46 +79,55 @@ foo | Add-Content -Path 'recipe_updated.txt'\n\nScriptBlock ID: 6ea311a5-b9d2-40
 3009 	24.12.2022 12:01:20 	Creating Scriptblock text (1 of 1):\n𝑓𝑜𝑜=𝐺𝑒𝑡−𝐶𝑜𝑛𝑡𝑒𝑛𝑡.\Recipe|
 foo | Add-Content -Path 'recipe_updated.txt'\n\n\nScriptBlock ID: 1189c065-869d-4386-8386-456c7c89130f\nPath:
 ```
-Answer is Recipe.txt
+
+By following the events, I found the answer: **Recipe.txt**
 
 ## Question 3
 
 > The contents of the previous file were retrieved, changed, and stored to a variable by the attacker. This was done multiple times. Submit the last full Powershell line that performed on these actions
 
-#### Query
+**Query**
 
 ```python
 q3df = df[ (df["DateOnly"] == pd.Timestamp("2022-12-24")) & (df["Category"].str.contains("\$foo\s=\sGet-Content", regex=True))].sort_values(by="DateTime", ascending=False).iloc[:1]
 q3df["Category"]
 ```
 
-#### Query Result
+**Query Result**
 
 ```
 2689    Creating Scriptblock text (1 of 1):\n$foo = Get-Content .\Recipe| % {$_ -replace 'honey', 'fish oil'}\n\nScriptBlock ID: 11c6e378-2879-460e-bcd9-06cdfa28c70a\nPath: 
 Name: Category, dtype: object
 ```
 
+Answer is 
+
+```powershell
+$foo = Get-Content .\Recipe| % {$_ -replace 'honey', 'fish oil'}
+```
+
 ## Question 4
 
 > After storing the altered file contents into the variable, the attacker used the variable to run a separate command that wrote the modified data to a file. This was done multiple times. Submit the last full PowerShell line that performed only this action.
 
-### Query
+**Query**
 
 ```python
 q4df = df[ (df["DateOnly"] == pd.Timestamp("2022-12-24")) & (df["Category"].str.contains("\$foo \|", regex=True))].sort_values(by="DateTime", ascending=False).iloc[:1]
 re.search(r"\n(.+)\n\n", q4df["Category"].iloc[0]).group(1)
 ```
 
-### Query Result
+**Query Result**
 
-"$foo | Add-Content -Path 'Recipe'"
+```powershell
+$foo | Add-Content -Path 'Recipe'
+```
 
 ## Question 5
 
 > The attacker ran the previous command against a file multiple times. What is the name of this file?
 
-### Query
+**Query**
 
 ```python
 q5df = df[ (df["DateOnly"] == pd.Timestamp("2022-12-24")) & (df["Category"].str.contains("foo", regex=True))].sort_values(by="DateTime", ascending=False)
@@ -123,7 +135,7 @@ q5df[ ["DateTime", "Category"] ]
 
 ```
 
-### Query Result
+**Query Result**
 
 ```
 	    DateTime 	            Category
@@ -144,33 +156,33 @@ foo | Add-Content -Path 'recipe_updated.txt'\n\nScriptBlock ID: 6ea311a5-b9d2-40
 foo | Add-Content -Path 'recipe_updated.txt'\n\n\nScriptBlock ID: 1189c065-869d-4386-8386-456c7c89130f\nPath:
 ```
 
-The answer is Recipe.txt
+The answer is **Recipe.txt**
 
 ## Question 6
 
 > Where any files deleted? (Yes/No)
 
-Answer is Yes
+Answer is **Yes**
 
 ## Question 7
 
 > Was the original file (from question 2) deleted? (Yes/No)
 
-The answer is Yes
+The answer is **No**
 
 ## Question 8
 
 > What is the Event ID of the log that shows the actual command line used to delete the file?
 
 
-### Query
+**Query**
 
 ```python
 q8df = df[ (df["DateOnly"] == pd.Timestamp("2022-12-24")) & (df["Category"].str.contains("Recipe.txt"))].groupby("EventID").size().sort_values(ascending=True)
 q8df
 ```
 
-### Query Result
+**Query Result**
 
 ```
 EventID
@@ -184,20 +196,20 @@ The answer is 4104
 
 > Is the secret ingredient compromised? (Yes/No)
 
-The answer is Yes
+The answer is *Yes*
 
 ## Question 10
 
 > What is the secret ingredient?
 
-### Query
+**Query**
 
 ```python
 q10dfa = df[ (df["DateOnly"] == pd.Timestamp("2022-12-24")) & (df["Category"].str.contains("\$foo\s=\sGet-Content", regex=True))].sort_values(by="DateTime", ascending=False).iloc[:1]
 q10dfa[["Category"]]
 ```
 
-### Query Result
+**Query Result**
 
 ```
 	    Category
@@ -205,16 +217,16 @@ q10dfa[["Category"]]
 _ -replace 'honey', 'fish oil'}\n\nScriptBlock ID: 11c6e378-2879-460e-bcd9-06cdfa28c70a\nPath:
 ``` 
 
-From this query, from question 3, we saw that the word "honey" was replaced with "fish oil".
+From this query, from question 3, we saw that the word "honey" was replaced with "fish oil". So the secret ingredient is **"honey"**
 
-### Query to validate answer
+**Query to validate answer**
 
 ```python
 q10dfb = df[ (df["DateOnly"] == pd.Timestamp("2022-12-24")) & (df["Category"].str.contains("honey|Honey", regex=True))].sort_values(by="DateTime", ascending=False).iloc[:1]
 q10dfb
 ```
 
-#### Validation Result
+**Validation Result**
 
 ```
 	    Level 			DateTime 				Origin 							EventID Task				Category 																						DateOnly
