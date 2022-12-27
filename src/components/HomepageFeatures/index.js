@@ -6,7 +6,7 @@ const FeatureList = [
   {
     title: 'Foreword',
     Svg: require('@site/static/img/weather.svg').default,
-    link: "docs/objectives/intro",
+    link: "docs/writeup/intro",
     description: (
       <>
         My foreword to this edition of SANS Holiday Hack Challenge
@@ -16,7 +16,7 @@ const FeatureList = [
   {
     title: 'Orientation',
     Svg: require('@site/static/img/weather.svg').default,
-    link: "docs/objectives/KringleCon%20Orientation",
+    link: "docs/writeup/KringleCon%20Orientation",
     description: (
       <>
         The very first tasks to solve before the game begins
@@ -76,7 +76,7 @@ const FeatureList = [
   {
     title: 'Finale  ',
     Svg: require('@site/static/img/weather.svg').default,
-    link: "docs/objectives/finale",
+    link: "docs/writeup/finale",
     description: (
       <>
         The End of the Game
