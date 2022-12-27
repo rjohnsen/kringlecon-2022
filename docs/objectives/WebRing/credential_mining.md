@@ -19,7 +19,7 @@ The site's login function is at /login.html. Maybe start by searching for a stri
 
 ## Solution
 
-Wireshark query
+Wireshark query using the Naughty IP from previous objective and information from the hint:
 
 ```
 ip.src == 18.222.86.32 && http && http.request.method == POST && http.request.uri == "/login.html"

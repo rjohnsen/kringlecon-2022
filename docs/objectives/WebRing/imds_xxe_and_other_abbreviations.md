@@ -19,7 +19,7 @@ AWS uses a specific IP address to access IMDS, and that IP only appears twice in
 
 ## Solution
 
-XXE means XML External Entity, which tells us we are looking for ... XML. Wireshark query
+XXE means XML External Entity, which tells us we are looking for ... XML. Wireshark query finding POST requests and XML in combination:
 
 ```
 http.request.method == POST && xml

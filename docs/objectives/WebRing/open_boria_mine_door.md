@@ -12,7 +12,7 @@ sidebar_position: 5
 
 ## Pin 1
 
-Inspecting the HTML source code we see a commented out line containing the keyword to unlock Pin 1. Simply copy and paste the value and you're good to go.
+Inspecting the HTML source code I saw a commented-out line containing the keyword to unlock Pin 1. Simply copy and paste the value and I was good to go.
 
 ```html
 <!-- @&@&&W&&W&&&& -->
@@ -20,7 +20,7 @@ Inspecting the HTML source code we see a commented out line containing the keywo
 
 ## Pin 2
 
-The general theme is to inspect the HTML source to find hints to solve the various pins. For Pin 2 we see a todo note to filter out HTML from user input. 
+The general theme is to inspect the HTML source to find hints to solve the various pins. For Pin 2 I saw a to-do note to filter out HTML from user input. 
 
 ```html
 <!-- TODO: FILTER OUT HTML FROM USER INPUT -->
@@ -36,7 +36,7 @@ The assignment seems to be to draw lines between various connecting dots. The be
 
 ## Pin 3
 
-Advancing on, we find a hint regarding Javascript in the HTML source
+Advancing on this, I found a hint regarding Javascript in the HTML source
 
 ```html
 <!-- TODO: FILTER OUT JAVASCRIPT FROM USER INPUT -->
@@ -57,7 +57,7 @@ document.write('
 
 ## Pin 4
 
-For this pin there are no commented out hints, but we find a sanitation script present which simply replaces the first occurrences of each special char;
+For this pin, there are no commented-out hints, but I found a sanitation script present which simply replaces the first occurrences of each special char;
 
 ```html
 <script>
@@ -85,7 +85,7 @@ Padding the input with <\> simply unlocked the pin:
 
 ## Pin 5
 
-The script from last pin has been extended to now filtrate out every occurrences.
+The script from the last pin has been extended to now filtrate out every occurrence!
 
 ```html
 <script>
@@ -101,7 +101,7 @@ The script from last pin has been extended to now filtrate out every occurrences
 </script>
 ```
 
-However, this happens only on client side. If we pass the POST request through BurpSuite proxy we can insert our trusty SVG tag:
+However, this happens only on the client side. If I pass the POST request through BurpSuite proxy, I can insert my trusty SVG tag:
 
 ```html
 inputTxt=<script>document.write('<svg height="170" width="200"><path d="M35 170 210 90" stroke-width="10" stroke="blue"/><path d="M0 135 210 40" stroke-width="10" stroke="red"/></svg>');</script>
@@ -109,7 +109,7 @@ inputTxt=<script>document.write('<svg height="170" width="200"><path d="M35 170 
 
 ## Pin 6
 
-No hint available here - but we are still in BurpSuite land manipulating the POST request directly:
+No hint available here - but I am still in BurpSuite land manipulating the POST request directly:
 
 ```html
 inputTxt=<svg height="170" width="200"><path d="M0 35 210 35" stroke-width="10" stroke="lime"/><path d="M0 75 240 115" stroke-width="10" stroke="red"/><path d="M0 115 150 170" stroke-width="10" stroke="blue"/></svg>
