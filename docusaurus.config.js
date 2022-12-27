@@ -13,7 +13,7 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  trailingSlash: true,
+  trailingSlash: false,
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -58,9 +58,9 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'objectives/intro',
+            docId: 'writeup/intro',
             position: 'left',
-            label: 'Objectives',
+            label: 'Write up',
           },
         ],
       },
