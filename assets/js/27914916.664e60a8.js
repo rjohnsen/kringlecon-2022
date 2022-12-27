@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkkringlecon_2022=self.webpackChunkkringlecon_2022||[]).push([[2046],{4469:e=>{e.exports=JSON.parse('{"name":"docusaurus-plugin-content-blog","id":"default"}')}}]);
