@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkkringlecon_2022=self.webpackChunkkringlecon_2022||[]).push([[9008],{4345:s=>{s.exports=JSON.parse('{"label":"docusaurus","permalink":"/kringlecon-2022/blog/tags/docusaurus","allTagsPath":"/kringlecon-2022/blog/tags","count":4}')}}]);

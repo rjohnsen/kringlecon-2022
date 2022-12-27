@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkkringlecon_2022=self.webpackChunkkringlecon_2022||[]).push([[3304],{4365:e=>{e.exports=JSON.parse('{"label":"facebook","permalink":"/kringlecon-2022/blog/tags/facebook","allTagsPath":"/kringlecon-2022/blog/tags","count":1}')}}]);
