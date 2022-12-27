@@ -55,7 +55,7 @@ Terminal: Jolly CI/CD
 If you find a way to impersonate another identity, you might try re-cloning a repo with their credentials.
 ```
 
-![Talk to Tinsel Upatree](/img/elfen-ring/git-hint.png)
+![Git hint](/img/elfen-ring/git-hint.png)
 
 
 ## Hacking CI/CD

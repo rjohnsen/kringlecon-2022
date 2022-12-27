@@ -20,11 +20,11 @@ The questions for this game is presented through a Cranberry terminal - but the 
 
 Wireshark has built in functionality to dump objects found in a PCAP. For this objective I opened the "File -> Export Objects" window:
 
-![Use the terminal](/img/tolkien-ring/wireshark-1.png)
+![Wireshark 1](/img/tolkien-ring/wireshark-1.png)
 
 Which displayed a short object list: 
 
-![Use the terminal](/img/tolkien-ring/wireshark-2.png)
+![Wireshark 2](/img/tolkien-ring/wireshark-2.png)
 
 The objects that can be exported from this PCAP is of the **HTTP** kind.
 
@@ -32,19 +32,19 @@ The objects that can be exported from this PCAP is of the **HTTP** kind.
 
 Still in the object list, the player can simply sort the list by "Size" column to find the largest file (or just find it manually since the list is so small - which I did). In this case it would be **"app.php"** (808 kB):
 
-![Use the terminal](/img/tolkien-ring/wireshark-2.png)
+![Wireshark 2](/img/tolkien-ring/wireshark-2.png)
 
 ### What packet number starts that app.php file?
 
 Still in the object list, the player can simply look at the "Packet" column to determine the packet number. In this case it would be **"687"**:
 
-![Use the terminal](/img/tolkien-ring/wireshark-2.png)
+![Wireshark 2](/img/tolkien-ring/wireshark-2.png)
 
 ### What is the IP of the Apache server?
 
 The player can go directly to the packet from last question by "Wireshark -> Go -> Go To Packet" and enter the packet number:
 
-![Use the terminal](/img/tolkien-ring/wireshark-finding-apache-ip.png)
+![Wireshark finding Apache IP](/img/tolkien-ring/wireshark-finding-apache-ip.png)
 
 Which will yield the answer, **"192.185.57.242"**.
 
@@ -52,7 +52,7 @@ Which will yield the answer, **"192.185.57.242"**.
 
 The player can solve this problem by saving the **"app.php"** file locally from this dialog (same as in "What is the name of the largest file we can export?"): 
 
-![Use the terminal](/img/tolkien-ring/wireshark-2.png)
+![Wireshark 2](/img/tolkien-ring/wireshark-2.png)
 
 Then opening the **"app.php"** file in a text editor, say Sublime which I dids. In this file there is a reference to a file:
 
@@ -86,7 +86,7 @@ tls.handshake.type == 11
 
 This returns a few entries:
 
-![Use the terminal](/img/tolkien-ring/wireshark-tls.png)
+![Wireshark TLS](/img/tolkien-ring/wireshark-tls.png)
 
 For each certificate entry the player should locate the "RDNSequence" section. Inside this section the player will find a CountryName field. Player should make note of each CountryName, like this: 
 
