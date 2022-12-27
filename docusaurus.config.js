@@ -9,7 +9,7 @@ const config = {
   title: 'SANS Holiday Hack Challenge 2022',
   tagline: 'Writeup by Roger C.B. Johnsen',
   url: 'https://github.com/',
-  baseUrl: '/',
+  baseUrl: '/kringlecon-2022/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
